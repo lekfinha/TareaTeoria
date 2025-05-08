@@ -2,10 +2,12 @@ from automata.automata import Automata
 from automata.node import AutomataState
 
 
-def automata_sufijos(automata: 'Automata', p: str) -> 'Automata':
+def automata_sufijos(pattern: str) -> 'Automata':
+    # creamos el automata
+    automata = Automata()
     # sea p = p1...pm
     # construimos el estado final q_m+1
-    m = len(p)
+    m = len(pattern)
     q_m1 = AutomataState(name=f"q_${m+1}", is_accepting=True)
     # para i \in [m, 1]
     for i in range(m, 0, -1):

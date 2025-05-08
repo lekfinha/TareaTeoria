@@ -18,7 +18,7 @@ def compute_lps(pattern):
 
     return lps
 
-def kmp_search(text, pattern):
+def kmp_search(text: str, pattern: str) -> list[int]:
     """
     Busca todas las apariciones del patrón en el texto usando el algoritmo KMP.
 

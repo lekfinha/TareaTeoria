@@ -10,7 +10,7 @@ def bad_character_table(pattern):
         table[pattern[i]] = i
     return table
 
-def boyer_moore(text, pattern):
+def boyer_moore(text, pattern) -> list[int]:
     """
     Searches for occurrences of 'pattern' in 'text' using the Boyer-Moore algorithm.
 

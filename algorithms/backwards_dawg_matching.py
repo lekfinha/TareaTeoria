@@ -5,14 +5,14 @@ def buscar_patron_bdm_adaptado(patron, texto):
     Busca las ocurrencias de un patrón en un texto utilizando el algoritmo BDM
     adaptado a la implementación del DAWG de tu amigo.
 
-    Args:
+    Argumentos:
         patron: La cadena de caracteres del patrón a buscar.
         texto: La cadena de caracteres en la que se buscará el patrón.
 
-    Returns:
+    Retorna:
         Una lista de los índices (basados en 1) donde se encuentra el patrón en el texto.
     """
-    D = dawg(patron[::-1])  # Construir el DAWG con el patrón invertido
+    D = dawg(patron[::-1])
     m = len(patron)
     n = len(texto)
     pos = 0
@@ -21,7 +21,7 @@ def buscar_patron_bdm_adaptado(patron, texto):
     while pos <= n - m:
         j = m
         last = m
-        estado_actual = D.initial_state  # Obtener el estado inicial del DAWG
+        estado_actual = D.initial_state
 
         while estado_actual is not None:
             simbolo = texto[pos + j - 1]
@@ -34,13 +34,13 @@ def buscar_patron_bdm_adaptado(patron, texto):
                     last = j
                 else:
                     ocurrencias.append(pos + 1)
-                break  # Salimos del bucle interno al encontrar una posible coincidencia
+                break 
 
         pos += last
 
     return ocurrencias
 
-# Ejemplo de uso (asumiendo que las clases Automata y AutomataState funcionan correctamente)
+# Ejemplo de uso
 if __name__ == "__main__":
     patron_ejemplo = "aba"
     texto_ejemplo = "ababaaba"

@@ -1,6 +1,6 @@
 from algorithms.dawg import dawg
 
-def BDM_search(dawg, text, pattern_length):
+def BDM_search(dawg, text):
     """
     Implementación del algoritmo Backwards DAWG Matching (BDM).
     
@@ -12,6 +12,7 @@ def BDM_search(dawg, text, pattern_length):
     Retorna:
         lista: Posiciones donde se encuentra el patrón.
     """
+    pattern_length = len(pattern)
     n = len(text)
     pos = 0
     occurrences = []
@@ -42,4 +43,4 @@ def BDM_search(dawg, text, pattern_length):
 if __name__ == "__main__":
     text = "AACTGCCCTG"
     pattern = "CTG"
-    print(BDM_search(pattern, text))  # Debería imprimir [2, 6]
+    print(BDM_search(pattern, text))

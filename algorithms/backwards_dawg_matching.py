@@ -1,11 +1,48 @@
-def backwards_dawg_matching(text: str, pattern: str) -> list[int]:
-    """
-    Searches for occurrences of 'pattern' in 'text' using the backwards DAWG matching algorithm.
+from algorithms.dawg import dawg
 
-    Example of usage:
-    text = "abxabcabcaby"
-    pattern = "abcaby"
-    result = backwards_dawg_matching(text, pattern)
-    print("Pattern found at positions:", result)
+def buscar_patron_bdm_adaptado(patron, texto):
     """
-    ...
+    Busca las ocurrencias de un patrón en un texto utilizando el algoritmo BDM
+    adaptado a la implementación del DAWG de tu amigo.
+
+    Args:
+        patron: La cadena de caracteres del patrón a buscar.
+        texto: La cadena de caracteres en la que se buscará el patrón.
+
+    Returns:
+        Una lista de los índices (basados en 1) donde se encuentra el patrón en el texto.
+    """
+    D = dawg(patron[::-1])  # Construir el DAWG con el patrón invertido
+    m = len(patron)
+    n = len(texto)
+    pos = 0
+    ocurrencias = []
+
+    while pos <= n - m:
+        j = m
+        last = m
+        estado_actual = D.initial_state  # Obtener el estado inicial del DAWG
+
+        while estado_actual is not None:
+            simbolo = texto[pos + j - 1]
+            next_state = estado_actual.get_next_state(simbolo)
+            estado_actual = next_state
+            j -= 1
+
+            if estado_actual is not None and estado_actual.is_accepting:
+                if j > 0:
+                    last = j
+                else:
+                    ocurrencias.append(pos + 1)
+                break  # Salimos del bucle interno al encontrar una posible coincidencia
+
+        pos += last
+
+    return ocurrencias
+
+# Ejemplo de uso (asumiendo que las clases Automata y AutomataState funcionan correctamente)
+if __name__ == "__main__":
+    patron_ejemplo = "aba"
+    texto_ejemplo = "ababaaba"
+    resultados = buscar_patron_bdm_adaptado(patron_ejemplo, texto_ejemplo)
+    print(f"Ocurrencias del patrón '{patron_ejemplo}' en '{texto_ejemplo}': {resultados}")

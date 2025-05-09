@@ -49,10 +49,10 @@ def main():
             # 1. Generación de datos
             print("Generando texto...", end=' ', flush=True)
             text = crear_texto(alphabet, n)
-            print(f"✅ Texto generado (primeros 10 chars: {text[:10]}...)")
+            print(f"Texto generado (primeros 10 chars: {text[:10]}...)")
             
             # 2. Obtención de patrón
-            print("🔄 Obteniendo patrón...", end=' ', flush=True)
+            print("Obteniendo patrón...", end=' ', flush=True)
             pattern = obtener_patron(text, j)
             if not pattern:
                 print("Error: No se pudo obtener patrón")

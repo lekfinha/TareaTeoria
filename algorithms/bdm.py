@@ -1,4 +1,4 @@
-from .dawg import dawg
+from algorithms.dawg import dawg
 
 def BDM_search(dawg, text, pattern_length):
     """
@@ -38,14 +38,8 @@ def BDM_search(dawg, text, pattern_length):
     return occurrences
 
 
-# testing
+# Ejemplo de uso
 if __name__ == "__main__":
-    from automata.afd import construir_DAWG
-
-    pattern = "ACTG"
-    reversed_pattern = pattern[::-1] 
-    dawg = construir_DAWG(reversed_pattern)  
-
-    text = "XXACTGYYACTGZZ"
-    occurrences = BDM_search(dawg, text, len(pattern))
-    print(f"Patrón encontrado en posiciones: {occurrences}")
+    text = "AACTGCCCTG"
+    pattern = "CTG"
+    print(BDM_search(pattern, text))  # Debería imprimir [2, 6]

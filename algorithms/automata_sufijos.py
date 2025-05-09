@@ -1,7 +1,6 @@
 from automata.automata import Automata
 from automata.node import AutomataState
 
-
 def automata_sufijos(pattern: str) -> 'Automata':
     # creamos el automata
     automata = Automata()

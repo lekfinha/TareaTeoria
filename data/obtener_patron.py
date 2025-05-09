@@ -1,3 +1,6 @@
+from random import randint
+
+
 def obtener_patron(text: str, j: int) -> str:
     """
     Obtiene un patrón de texto con j caracteres repetidos.
@@ -8,12 +11,12 @@ def obtener_patron(text: str, j: int) -> str:
     # verificamos que este en {6, 7, 8, 9, 10}
     if j not in {6, 7, 8, 9, 10}:
         raise ValueError("j debe estar en {6, 7, 8, 9, 10}")
-    # calculamos el largo del patron
-    m = 2**j
-    # creamos el patron
-    patron = ""
-    for i in range(m):
-        # elegimos un character aleatorio del alfabeto
-        patron += alphabet[i % len(alphabet)]
+    # calculamos i max
+    n = len(text)
+    i_max = n - 2 ** j - 1
+    # obtenemos un numero aleatorio entre 0 y i_max
+    i = randint(0, i_max)
+    # obtenemos el patron
+    patron = text[i:i + 2 ** j]
     # retornamos el patron
     return patron

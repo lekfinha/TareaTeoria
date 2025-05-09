@@ -77,7 +77,7 @@ def main():
 
     # guardamos los resultados en un archivo json
     with open("results.json", "w") as f:
-        json.dump(results, f, indent=3)
+        json.dump(results, f, indent=4)
 
 
 # This is the main entry point of the script.

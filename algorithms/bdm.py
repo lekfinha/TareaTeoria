@@ -7,7 +7,6 @@ def BDM_search(dawg, text):
     Argumentos:
         dawg (DAWG): Autómata de sufijos del patrón invertido (DAWG).
         text (str): Texto donde buscar.
-        pattern_length (int): Longitud del patrón original (m).
     
     Retorna:
         lista: Posiciones donde se encuentra el patrón.

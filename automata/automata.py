@@ -68,10 +68,14 @@ class Automata:
             
         self.transitions[from_state][symbol] = to_states_objs
         from_state_obj.add_transition(symbol, to_states_objs)
-
     def add_epsilon_transition(self, from_state: str, to_state: str):
-        """Añade una transición épsilon"""
-        self.add_transition(from_state, self.epsilon, [to_state])
+            """
+            Adds an epsilon transition to the automata.
+            """
+            from_s = next((s for s in self.states if s.name == from_state), None)
+            to_s = next((s for s in self.states if s.name == to_state), None)
+            if from_s and to_s:
+                from_s.transitions[self.epsilon] = to_s # Siempre asignamos un solo estado
 
     def to_deterministic(self):
         """Convierte el autómata a determinista usando construcción de subconjuntos"""
@@ -97,7 +101,7 @@ class Automata:
             for symbol in self.alphabet:
                 next_states = []
                 for state in current_set:
-                    next_states.extend(state.get_next_states(symbol) or [])
+                    next_states.extend(state.get_next_state(symbol) or [])
                 
                 if not next_states:
                     continue
@@ -132,7 +136,7 @@ class Automata:
         
         while stack:
             state = stack.pop()
-            epsilon_transitions = state.get_next_states(self.epsilon) or []
+            epsilon_transitions = [state.get_next_state(self.epsilon)] if state.get_next_state(self.epsilon) else []
             for s in epsilon_transitions:
                 if s not in closure:
                     closure.add(s)

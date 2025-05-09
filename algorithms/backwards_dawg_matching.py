@@ -1,6 +1,6 @@
 from algorithms.dawg import dawg
 
-def buscar_patron_bdm_adaptado(patron, texto):
+def backwards_dawg_matching(patron, texto):
     """
     Busca las ocurrencias de un patrón en un texto utilizando el algoritmo BDM
     adaptado a la implementación del DAWG de tu amigo.

@@ -41,4 +41,3 @@ class AutomataState:
         if isinstance(other, AutomataState):
             return self.name == other.name
         return False
-

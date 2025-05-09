@@ -27,8 +27,8 @@ def benchmark_algorithm(algo_name: str, algo_func, text: str, pattern: str) -> R
 def main():
     # Configuración reducida para pruebas
     alphabet = ["A", "C", "G", "T"]
-    n = 2**10 # Con números más grandes se demora demasiado, falta optimizar bdm
-    j_values = [6,7,8,9,10]  # con j = 10 ya no funciona por el limite que tiene n
+    n = 2**10 # Con números más grandes se demora demasiado, falta optimizar AFND a AFD
+    j_values = [6,7,8,9]  # con j = 10 ya no funciona por el limite que tiene n
     
     print(f"\nIniciando experimento con texto de tamaño {n}")
     print(f"Valores de j: {j_values}\n")

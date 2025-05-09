@@ -14,7 +14,7 @@ def automata_sufijos(pattern: str) -> 'Automata':
         # construimos el estado q_i
         q_i = AutomataState(name=f"q_{i}")
         # agregamos la transicion (q_i, p_i) -> q_i+1
-        automata.add_transition(q_i.get_name(), p[i-1], f"q_{i+1}")
+        automata.add_transition(q_i.get_name(), pattern[i-1], f"q_{i+1}")
     # construimos el estado inicial
     q0 = AutomataState(name="q_0")
     # para i \in [0, m]
